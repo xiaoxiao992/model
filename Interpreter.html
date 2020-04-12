@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div id='container'>
+        <div>
+            <div>
+                <ul>
+                    <li><span id="span1"></span></li>
+                    <li><span id="span2"></span></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div>
+                <ul>
+                    <li><span id="span6"></span></li>
+                    <li><span id="span7"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="./InterpreterMode.js"></script>
+    <script>
+        var path = Interpreter(document.getElementById('span7'));
+        console.log(path.join('>'))
+    </script>
+</body>
+</html>

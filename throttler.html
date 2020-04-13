@@ -16,6 +16,28 @@
             <img src="img/weibo.png" alt="" />
             <span class="arrow"><em></em></span>
         </div>
+        <div>
+            <button id="btn">test</button>
+        </div>
     </div>
+    <script src="./ThrottlerModel.js"></script>
+    <script>
+        // 点击统计
+        btn.onclick = function() {
+            LogPack({
+                btnId: this.id,
+                context: this.innerHtml,
+                type: 'click'
+            })
+        }
+        // 点击统计
+        btn.onmouseover = function() {
+            LogPack({
+                btnId: this.id,
+                context: this.innerHtml,
+                type: 'click'
+            })
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>widget模式</title>
+    <script src="./index.js"></script>
+</head>
+<body>
+    <!-- 页面元素内容 -->
+    <div id="demo_tag" class="template">
+        <div id="tag_cloud">
+            {% for(var i = 0, len = tagCloud.length; i < len; i++) {
+                var ctx = tagCloud[i]; %}
+                <a href="#" class="tag_item">
+                    {% if(ctx['is_selected']) { %}
+                    selected
+                    {% } %}
+                    " title="{%=ctx["title"]%}">{%=ctx["text"]%}</a>
+                {%  } %}
+            } %}
+        </div>
+    </div>
+    <!-- 表单元素内的内容 -->
+    <textarea id="demo_textarea" class="template">
+        <div id="tag_cloud">
+            {% for(var i = 0, len = tagCloud.length; i < len; i++) {
+                var ctx = tagCloud[i]; %}
+                <a href="#" class="tag_item">
+                    {% if(ctx["is_selected"]){ %}
+                    selected
+                    {% } %}
+                    " title="{%=ctx["title"]%}">{%=ctx["text"]%}
+                </a>
+            } %}
+        </div>
+    </textarea>
+    <!-- script模版内容 -->
+    <script type="text/template" id="demo_script">
+        <div id="tag_cloud">
+            {% for(var i = 0, len = tagCloud.length; i < len; i++){
+                var ctx = tagCloud[i]; %}
+                <a href="#" class="tag_item">
+                    {% if(ctx["is_selected"]) { %}
+                    selected
+                    {% } %}
+                    " title="{%=ctx["title"]%}">{%=ctx["text"]%}
+                </a>
+            {% } %}
+        </div>
+    </script>
+    <!-- 自定义模版 -->
+    var demo_tpl = ['<div id="tag_cloud">',
+        '{% for(var i = 0, len = tagCloud.length; i < len; i++) {',
+              'var ctx = tagCloud[i];%}',
+              '<a href="#" class="tag_item ',
+                 'selected',
+                 '{% } %}',
+                 '" title="{%=ctx["title"]%}">{%=ctx["text"]%}</a>',
+                 '{% } %}',
+                 '</div>'].join('');
+    </div>']
+    <script>
+        var data = {
+            tagCloud: [
+                {is_selected: true, title: '这是一本设计模式书', text: '设计模式'},
+                {is_selected: false, title: '这是一本HTML书', text: 'HTML'},
+                {is_selected: null, title: '这是一本CSS书', text: 'CSS'},
+                {is_selected: '', title: '这是一本JAVASCRIPT书', text: 'JAVASCRIPT'}
+            ]
+        }
+        // 完成我们的标签云组件模块很容易
+        F.module(['lib/template', 'lib/dom'], function(template, dom) {
+            // 服务器获取到data数据逻辑
+            // 创建组件视图逻辑
+            var str = template('demo_script', data)
+            dom.html('test', str);
+            // 组件其他交互逻辑
+        })
+    </script>
+</body>
+</html>
